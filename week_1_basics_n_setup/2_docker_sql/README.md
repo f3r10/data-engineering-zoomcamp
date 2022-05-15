@@ -12,7 +12,21 @@ Downloading the data
 ```bash
 wget https://s3.amazonaws.com/nyc-tlc/trip+data/yellow_tripdata_2021-01.csv
 ```
-
+### new data
+from https://www1.nyc.gov/site/tlc/about/tlc-trip-record-data.page
+```bash
+wget https://s3.amazonaws.com/nyc-tlc/trip+data/yellow_tripdata_2021-01.parquet
+```
+then it is necessary to convert the data. This process can be done with pandas. But first it is necessary to install a lib that is able to read this kind of format:
+```bash
+pip install fastparquet
+```
+then on a notebook or python script:
+```python
+import pandas a pd
+df = pd.read_parquet("yellow_tripdata_2021-01.parquet")
+df.to_csv("yellow_tripdata_2021-01.csv")
+```
 ### Running Postgres with Docker
 
 #### Windows
