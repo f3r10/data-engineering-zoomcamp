@@ -165,8 +165,10 @@ docker run -it \
 
 Running locally
 
+for fish it is necessary to use `set`
+and `{$URL}` instead of `${URL}`
 ```bash
-URL="https://s3.amazonaws.com/nyc-tlc/trip+data/yellow_tripdata_2021-01.csv"
+set URL "https://s3.amazonaws.com/nyc-tlc/trip+data/yellow_tripdata_2021-01.parquet"
 
 python ingest_data.py \
   --user=root \
@@ -175,7 +177,7 @@ python ingest_data.py \
   --port=5432 \
   --db=ny_taxi \
   --table_name=yellow_taxi_trips \
-  --url=${URL}
+  --url={$URL}
 ```
 
 Build the image

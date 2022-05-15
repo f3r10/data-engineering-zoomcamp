@@ -19,8 +19,14 @@ def main(params):
     table_name = params.table_name
     url = params.url
     csv_name = 'output.csv'
+    parquet_name = 'output.parquet'
+    
+    os.system(f"wget {url} -O {parquet_name}")
+    
+    df = pd.read_parquet(parquet_name)
+    
+    df.to_csv(csv_name)
 
-    os.system(f"wget {url} -O {csv_name}")
 
     engine = create_engine(f'postgresql://{user}:{password}@{host}:{port}/{db}')
 
